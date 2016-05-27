@@ -1,8 +1,29 @@
 import QtQuick 2.0
 
 Item {
-    width: 400
-    height: 400
+    id: velocimetre
+    transform: Rotation {
+        id: rot
+        origin.x: contenidorCursor.width/2;
+        origin.y: contenidorCursor.height/2;
+        axis.x:0; axis.y:1; axis.z:0
+        angle:90
+        Behavior on angle {
+            SpringAnimation {
+                spring: .70
+                damping: .5
+                duration: 1000
+            }
+        }
+    }
+    function showFront() {
+        rot.angle=0;
+    }
+
+    function showBack() {
+        rot.angle=90;
+    }
+    anchors.centerIn:parent
     property real angle : 0
     property real km : 0
     onKmChanged: contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
@@ -17,12 +38,12 @@ Item {
         id: contenidorCursor
         width: parent.width
         height: parent.height
+        anchors.centerIn: parent.Center
         color: "transparent"
         Image {
                 id: cursor
-                x:55
-                y:181
-                source: "qrc:/img/vel_04div_agulla.png"
+                anchors.centerIn: parent
+                source: "qrc:/img/vel_05div_agulla.png"
         }
         Behavior on rotation {
             SpringAnimation {
@@ -33,7 +54,6 @@ Item {
         }
     }
 
-
         Keys.onLeftPressed:{
             km=km-1
             if(km<0 ){
@@ -42,7 +62,6 @@ Item {
                 km=200
             }
             contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
-            //console.log(km)
         }
         Keys.onRightPressed: {
             km=km+1
@@ -53,10 +72,10 @@ Item {
             }
             contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
             angle = contenidorCursor.rotation
-            //console.log(km)
         }
         Keys.onPressed: {
                 if (event.key == Qt.Key_X) {
+                    velocimetre.showBack()
                     km=km+10
                     if(km<0 ){
                         km=0
@@ -65,8 +84,8 @@ Item {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
                     angle = contenidorCursor.rotation
-                    console.log(km)
                 }else if (event.key == Qt.Key_Z) {
+                    velocimetre.showFront()
                     km=km-10
                     if(km<0 ){
                         km=0
@@ -75,7 +94,6 @@ Item {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
                     angle = contenidorCursor.rotation
-                    console.log(km)
                 }else if (event.key == Qt.Key_V) {
                     km=km+20
                     if(km<0 ){
@@ -85,7 +103,6 @@ Item {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
                     angle = contenidorCursor.rotation
-                    console.log(km)
                 }else if (event.key == Qt.Key_C) {
                     km=km-20
                     if(km<0 ){
@@ -95,7 +112,6 @@ Item {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (251*km)/200)
                     angle = contenidorCursor.rotation
-                    console.log(km)
                 }
             }
 

@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: idrpm
     width: 400
     height: 400
     property real angle : 0
@@ -8,6 +9,30 @@ Rectangle {
     onRpmChanged: contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
     objectName: "Rpm"
     color: "transparent"
+
+    transform: Rotation {
+        id: rot
+        origin.x: contenidorCursor.width/2;
+        origin.y: contenidorCursor.height/2;
+        axis.x:0; axis.y:1; axis.z:0
+        angle:90
+
+        Behavior on angle {
+            SpringAnimation {
+                spring: .70
+                damping: .5
+                duration: 1000
+            }
+        }
+    }
+
+    function showFront() {
+        rot.angle=0;
+    }
+
+    function showBack() {
+        rot.angle=90;
+    }
     Image {
         id : fons
         anchors.centerIn: parent
@@ -18,11 +43,14 @@ Rectangle {
         width: parent.width
         height: parent.height
         color: "transparent"
+        anchors.centerIn: parent.Center
+
         Image {
                 id: cursor
-                x:80
-                y:181
-                source: "qrc:/img/rpm_04div_agulla.png"
+
+                anchors.centerIn: parent
+                source: "qrc:/img/rpm_05div_agulla.png"
+
         }
         Behavior on rotation {
             SpringAnimation {
@@ -33,7 +61,6 @@ Rectangle {
         }
     }
 
-
         Keys.onLeftPressed:{
             rpm=rpm-1
             if(rpm<0 ){
@@ -42,7 +69,6 @@ Rectangle {
                 km=200
             }
             contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
-            console.log(km)
         }
         Keys.onRightPressed: {
             rpm=rpm+1
@@ -53,8 +79,6 @@ Rectangle {
             }
             contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
             angle = contenidorCursor.rotation
-            console.log(rpm)
-            c//onsole.log(angle)
         }
         Keys.onPressed: {
                 if (event.key == Qt.Key_X) {
@@ -66,7 +90,6 @@ Rectangle {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
                     angle = contenidorCursor.rotation
-                    console.log(rpm)
                 }else if (event.key == Qt.Key_Z) {
                     rpm=rpm-10
                     if(rpm<0 ){
@@ -76,7 +99,6 @@ Rectangle {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
                     angle = contenidorCursor.rotation
-                    console.log(rpm)
                 }else if (event.key == Qt.Key_V) {
                     rpm=rpm+20
                     if(rpm<0 ){
@@ -86,7 +108,6 @@ Rectangle {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
                     angle = contenidorCursor.rotation
-                    console.log(rpm)
                 }else if (event.key == Qt.Key_C) {
                     rpm=rpm-20
                     if(rpm<0 ){
@@ -96,10 +117,8 @@ Rectangle {
                     }
                     contenidorCursor.rotation = (contenidorCursor.rotation = (280*rpm)/8000)
                     angle = contenidorCursor.rotation
-                    console.log(rpm)
                 }
             }
+        focus :true
 
-
-        focus: true
 }

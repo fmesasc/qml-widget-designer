@@ -13,7 +13,6 @@ public:
     QTimer *timer;
     int km;
     int rpm;
-    //void setController(QQmlApplicationEngine *controller);
     void setKmQML(QObject *qmlObject);
     void setRpmQML(QObject *rpmObject);
 public slots:
@@ -24,7 +23,6 @@ private slots:
 private:
     QObject *qmlObject;
     QObject *rpmObject;
-    //Ui::Actualitzador *ui;
     QUdpSocket *udpSocketUdpRx;
     void vInterpretaTramaRebudaUdp(QByteArray datagrama,QHostAddress adrecaOrigen);
 };

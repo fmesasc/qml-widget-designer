@@ -7,7 +7,8 @@
         <file>content/Rpm.qml</file>
         <file>img/rpm_04div_agulla.png</file>
         <file>img/rpm_04div_background.png</file>
-        <file>img/tramontana_Logo-04_01.png</file>
-        <file>img/tramontana_Background_01.png</file>
+        <file>img/Background_01.png</file>
+        <file>img/rpm_05div_agulla.png</file>
+        <file>img/vel_05div_agulla.png</file>
     </qresource>
 </RCC>

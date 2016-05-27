@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>dragDrop2.qml</file>
+        <file>Rectangle.qml</file>
+        <file>principal.qml</file>
+        <file>Move.qml</file>
+    </qresource>
+</RCC>

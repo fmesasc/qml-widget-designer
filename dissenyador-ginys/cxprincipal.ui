@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CxPrincipal</class>
+ <widget class="QMainWindow" name="CxPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>734</width>
+    <height>581</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CxPrincipal</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="QMLcontent"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>734</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Arxiu</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionDesar_QML"/>
+    <addaction name="separator"/>
+    <addaction name="actionImportar_QML"/>
+    <addaction name="separator"/>
+    <addaction name="actionTanca"/>
+   </widget>
+   <widget class="QMenu" name="menuAdd">
+    <property name="title">
+     <string>Afegeix</string>
+    </property>
+    <addaction name="afegirForma"/>
+    <addaction name="afegirTxt"/>
+   </widget>
+   <widget class="QMenu" name="menuVisualitza">
+    <property name="title">
+     <string>Visualitza</string>
+    </property>
+    <addaction name="actionPunts_de_tamany"/>
+    <addaction name="actionText"/>
+   </widget>
+   <widget class="QMenu" name="menuAjuda">
+    <property name="title">
+     <string>Ajuda</string>
+    </property>
+    <addaction name="actionVersion"/>
+    <addaction name="separator"/>
+    <addaction name="actionAutor"/>
+   </widget>
+   <widget class="QMenu" name="menuPrefer_ncies">
+    <property name="title">
+     <string>Preferències</string>
+    </property>
+    <addaction name="actionFons_del_QML"/>
+    <addaction name="actionPunts_tamany"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuAdd"/>
+   <addaction name="menuVisualitza"/>
+   <addaction name="menuPrefer_ncies"/>
+   <addaction name="menuAjuda"/>
+  </widget>
+  <widget class="QToolBar" name="EinesDeCreacio">
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="barraEstat"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Obrir QML</string>
+   </property>
+  </action>
+  <action name="actionRectangle">
+   <property name="text">
+    <string>Rectangle</string>
+   </property>
+  </action>
+  <action name="afegirForma">
+   <property name="text">
+    <string>Forma</string>
+   </property>
+  </action>
+  <action name="afegirTxt">
+   <property name="text">
+    <string>Text</string>
+   </property>
+  </action>
+  <action name="actionPunts_de_tamany">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Punts de tamany</string>
+   </property>
+  </action>
+  <action name="actionVersion">
+   <property name="text">
+    <string>Versio</string>
+   </property>
+  </action>
+  <action name="actionAutor">
+   <property name="text">
+    <string>Autor</string>
+   </property>
+  </action>
+  <action name="actionDesar_QML">
+   <property name="text">
+    <string>Desar QML</string>
+   </property>
+  </action>
+  <action name="actionImportar_QML">
+   <property name="text">
+    <string>Importar QML</string>
+   </property>
+  </action>
+  <action name="actionTanca">
+   <property name="text">
+    <string>Tanca</string>
+   </property>
+  </action>
+  <action name="actionText">
+   <property name="text">
+    <string>Text</string>
+   </property>
+  </action>
+  <action name="actionFons_del_QML">
+   <property name="text">
+    <string>Fons del QML</string>
+   </property>
+  </action>
+  <action name="actionPunts_tamany">
+   <property name="text">
+    <string>Punts tamany</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

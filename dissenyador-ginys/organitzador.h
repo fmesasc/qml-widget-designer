@@ -12,6 +12,7 @@ public:
     void addObjecte(QString InstruccioQML, Objecte *obj);
     void deleteObjecte(Objecte *objecte);
     void setOrganitzadorRootElement(QObject *objecte);
+    void newExternalForm(QString form);
     bool exist(QString id);
 /*
 signals:

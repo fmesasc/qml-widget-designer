@@ -134,3 +134,4 @@ void Formes::nouRectangleDef(){
 void Formes::nouCercleDef(){
     emit novaForma("1", 100, 100, "#00FF00", "Cercle");
 }
+

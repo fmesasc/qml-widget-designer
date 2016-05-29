@@ -46,6 +46,7 @@
     </property>
     <addaction name="afegirForma"/>
     <addaction name="afegirTxt"/>
+    <addaction name="actionVelocimetre"/>
    </widget>
    <widget class="QMenu" name="menuVisualitza">
     <property name="title">
@@ -87,11 +88,6 @@
   <action name="actionOpen">
    <property name="text">
     <string>Obrir QML</string>
-   </property>
-  </action>
-  <action name="actionRectangle">
-   <property name="text">
-    <string>Rectangle</string>
    </property>
   </action>
   <action name="afegirForma">
@@ -153,6 +149,11 @@
   <action name="actionPunts_tamany">
    <property name="text">
     <string>Punts tamany</string>
+   </property>
+  </action>
+  <action name="actionVelocimetre">
+   <property name="text">
+    <string>QML extern</string>
    </property>
   </action>
  </widget>

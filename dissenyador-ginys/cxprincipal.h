@@ -21,11 +21,15 @@ public:
     ~CxPrincipal();
 signals:
     void createNew();
+    void newExternalForm(QString);
 private slots:
     void novaForma();
     void crearRectanglePredef();
     void crearCerclePredef();
     void crearText();
+
+    void on_actionVelocimetre_triggered();
+
 private:
     Ui::CxPrincipal *ui;
     Organitzador *organitzador;

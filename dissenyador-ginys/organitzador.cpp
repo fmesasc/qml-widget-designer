@@ -2,6 +2,10 @@
 #include <QVariant>
 #include <QErrorMessage>
 #include <QMessageBox>
+#include <QDir>
+#include <QTextStream>
+#include <QDebug>
+#include <QFileDialog>
 
 Organitzador::Organitzador(QObject *objecte)
 {
@@ -107,17 +111,50 @@ void Organitzador::addForma(QString id, float width, float height, QString Color
         msgBox.exec();
         return;
     }
+    qDebug()<<tipus;
     Objecte *obj;
     obj = new Objecte(new QObject());
     obj->setID(id);
     obj->setTipus(tipus);
+    QString instruccio;
     QString radi ="";
     if(tipus=="Cercle"){
         radi = "radius: width*0.5;";
     }else if(tipus=="Rectangle"){
         radi = "radius: 1;";
+    }else if(tipus=="Velocimetre"){
+        int randomValue = qrand() % 100000000;
+        obj->setID( QString::number( randomValue ));
+       /* QDir assetsFolder = QDir("/home/francisco/Projecte/Ejercicios/20160512_cx/cx-supervisor/CX/content");//QUrl("qrc:/content")
+        QStringList files = assetsFolder.entryList(QDir::Files);
+        qDebug()  << "Entered";
+        foreach (QString file, files) {
+            qDebug() << file;
+            QFile f(file);
+            //if (f.open(QFile::ReadError | QFile::Text)) break;
+            qDebug() << "Reading file";
+            QTextStream in(&f);
+            qDebug() << f.size() << in.readAll();
+        }*/
+        /*QStringList stringList;
+        QFile textFile("/home/francisco/Projecte/Ejercicios/20160512_cx/cx-supervisor/CX/content/Velocimetre.qml");
+        //... (open the file for reading, etc.)
+        QTextStream textStream(&textFile);
+        while (true)
+        {
+            QString line = textStream.readLine();
+            if (line.isNull())
+                break;
+            else
+                stringList.append(line);
+        }
+        QFile f("/home/francisco/Projecte/Ejercicios/20160512_cx/cx-supervisor/CX/content/Velocimetre.qml");
+        */
+        //qDebug() << fileName;
+        instruccio = Color;
+
     }
-    QString instruccio;
+    if(tipus!="Velocimetre"){
         instruccio =
             "import QtQuick 2.0; "
             "Item "
@@ -226,6 +263,9 @@ void Organitzador::addForma(QString id, float width, float height, QString Color
                     "}"
 
                "}";
+
+        //QObject::connect(obj->getObject(), SIGNAL(showInfo()),obj, SLOT(mostraInfo()));
+    }
     addObjecte(instruccio,obj);
     QObject::connect(obj->getObject(), SIGNAL(showInfo()),obj, SLOT(mostraInfo()));
 }
@@ -275,3 +315,9 @@ void Organitzador::PuntsTamany(bool a){
         }
     }
 }
+
+
+void Organitzador::newExternalForm(QString form){
+    emit addForma("1", 100, 100, form, "Velocimetre");
+}
+

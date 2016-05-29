@@ -4,5 +4,13 @@
         <file>Rectangle.qml</file>
         <file>principal.qml</file>
         <file>Move.qml</file>
+        <file>content/Rpm.qml</file>
+        <file>content/Velocimeter.qml</file>
+        <file>img/rpm_04div_background.png</file>
+        <file>img/vel_05div_background.png</file>
+        <file>img/Background_01.png</file>
+        <file>img/rpm_05div_agulla.png</file>
+        <file>img/vel_05div_agulla.png</file>
+        <file>ControllerVel.qml</file>
     </qresource>
 </RCC>

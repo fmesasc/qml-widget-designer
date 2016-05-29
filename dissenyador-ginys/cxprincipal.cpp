@@ -10,6 +10,8 @@
 #include "organitzador.h"
 #include "Formes.h"
 #include "tipustext.h"
+#include <QFileDialog>
+#include <QMessageBox>
 
 CxPrincipal::CxPrincipal(QWidget *parent) : QMainWindow(parent), ui(new Ui::CxPrincipal) {
     ui->setupUi(this);
@@ -27,10 +29,13 @@ CxPrincipal::CxPrincipal(QWidget *parent) : QMainWindow(parent), ui(new Ui::CxPr
     ui->QMLcontent->addWidget(container);
     connect(nouRect, SIGNAL(triggered()), this, SLOT(crearRectanglePredef()));
     connect(novaRodona, SIGNAL(triggered()), this, SLOT(crearCerclePredef()));
+
     connect(ui->afegirForma, SIGNAL(triggered()), this, SLOT(novaForma()));
     connect(ui->afegirTxt, SIGNAL(triggered()), this, SLOT(crearText()));
     connect(nouText, SIGNAL(triggered()), this, SLOT(crearText()));
     connect(ui->actionPunts_de_tamany, SIGNAL(triggered(bool)),organitzador,SLOT(PuntsTamany(bool)));
+    connect(this,&CxPrincipal::newExternalForm,organitzador,&Organitzador::newExternalForm);
+
 }
 
 CxPrincipal::~CxPrincipal()
@@ -88,6 +93,7 @@ void CxPrincipal::crearCerclePredef(){
     tr->nouRectangleDef();
 }
 
+
 /*!
  * \brief CxPrincipal::crearText
  * Crea un text predefinit
@@ -100,3 +106,29 @@ void CxPrincipal::crearText(){
     connect(tt,&tipusText::nouText,organitzador,&Organitzador::addText);
 }
 
+
+void CxPrincipal::on_actionVelocimetre_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open QML"), "/home/francisco/Projecte/Ejercicios/20160512_cx/cx-supervisor/CX", tr("QML Files (*.qml)"));
+
+    QFile file(fileName);
+    if(!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::information(0, "error", file.errorString());
+    }
+
+    QTextStream in(&file);
+    //qDebug()<<in.readAll().;
+    QString line ="";
+    while(!in.atEnd()) {
+        line.append(in.readLine());
+
+        //QStringList fields = line.split(",");
+        //model->appendRow(fields);
+       // qDebug()<<fields;
+    }
+    qDebug()<<line;
+    file.close();
+
+    // organitzador->newExternalForm();
+    emit newExternalForm(line);
+}

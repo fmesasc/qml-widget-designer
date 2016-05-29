@@ -15,6 +15,7 @@ public:
     explicit Formes(QWidget *parent = 0);
     void nouRectangleDef();
     void nouCercleDef();
+    void newExternalForm();
     ~Formes();
 signals:
     //void nouRectangle();

@@ -32,7 +32,6 @@ HEADERS  += cxprincipal.h \
 
 FORMS    += cxprincipal.ui \
     tipusrectangle.ui \
-    tipuscercle.ui \
     informacio.ui \
     tipustext.ui
 

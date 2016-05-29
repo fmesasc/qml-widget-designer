@@ -31,6 +31,9 @@ public slots:
     void mostraInfo();
     void actualitzaInfo(informacio *info);
     void novaInfo(informacio *info, float Radi,float Alcada,float Amplada,QString color,QString tipus, float Escala);
+signals:
+    void showInfo();
+
 private:
     QObject *obj;
     QString id;
